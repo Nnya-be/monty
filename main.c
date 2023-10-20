@@ -1,4 +1,7 @@
 #include "monty.h"
+#include <stdio.h>
+#define _GNU_SOURCE
+#include <stdlib.h>
 /**
  *main -Start of the program execution
  *@argv: Argument Vector
@@ -30,7 +33,7 @@ if (!file_ptr)
 while (line_read > 0)
 {
 	file_content = NULL;
-	line_read = getline (&file_content, &size_read, file_ptr);
+	line_read = getline(&file_content, &size_read, file_ptr);
 	bus.content = file_content;
 
 	if (line_read > 0)
