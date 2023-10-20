@@ -1,10 +1,13 @@
 #ifndef MONTY_H_
 #define MONTY_H_
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/types.h>
+#include <fcntl.h>
+#include <ctype.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -36,3 +39,36 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 #endif
+
+typedef struct bus_s
+{
+	char *arg;
+	FILE *file;
+	char *content;
+	int lifi;
+}  bus_t;
+extern bus_t bus;
+int func_call(char *file_content, stack_t **stack, unsigned int counter , FILE *file_ptr);
+void free_stack(stack_t *head);
+void func_pall(stack_t **head, unsigned int counter);
+void func_queue(stack_t **head, unsigned  int counter);
+void addqueue(stack_t **head, int n);
+void func_push(stack_t **head, unsigned int counter);
+void addnode(stack_t **head, int n);
+char *_realloc(char *ptr, unsigned int old_size, unsigned int new_size);
+ssize_t getstdin(char **lineptr, int file);
+char  *clean_line(char *content);
+void func_pint(stack_t **head, unsigned int number);
+void func_pop(stack_t **head, unsigned int counter);
+void func_swap(stack_t **head, unsigned int counter);
+void func_add(stack_t **head, unsigned int counter);
+void func_nop(stack_t **head, unsigned int counter);
+void func_sub(stack_t **head, unsigned int counter);
+void func_div(stack_t **head, unsigned int counter);
+void func_mul(stack_t **head, unsigned int counter);
+void func_mod(stack_t **head, unsigned int counter);
+void func_pchar(stack_t **head, unsigned int counter);
+void func_pstr(stack_t **head, unsigned int counter);
+void func_rotl(stack_t **head, unsigned int counter);
+void func_rotr(stack_t **head, __attribute__((unused)) unsigned int counter);
+void func_stack(stack_t **head, unsigned int counter);
